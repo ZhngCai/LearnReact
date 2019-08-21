@@ -15,13 +15,14 @@ class TodoList extends Component {
   constructor(props){
     super(props);
     this.state = store.getState();
+    this.handleAddItem = this.handleAddItem.bind(this);
   }
   render(){
     return (
       <Fragment>
         <div style={{marginTop:"10px",marginLeft:'10px'}}>
           <Input value={this.state.inputValue} placeholder="todo info" style={{width:"300px",marginRight:'10px'}} />
-          <Button type="primary">Primary</Button>
+          <Button type="primary" onClick={this.handleAddItem}>Primary</Button>
         </div>
         <List
           style={{marginTop:"10px",marginLeft:'10px',width:'300px'}}
@@ -31,9 +32,16 @@ class TodoList extends Component {
           dataSource={this.state.list}
           renderItem={item => (<List.Item>{item}</List.Item>)}
         />
-        
       </Fragment>
     )
+  }
+
+  handleAddItem(){
+    this.setState((prevState)=>{
+      return {
+        list: [...prevState.list,'item']
+      }
+    })
   }
 }
 

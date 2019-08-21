@@ -1,6 +1,6 @@
 const defaultState = {
   inputValue: 'react',
-  list: []
+  list: ['react','vue','angular']
 }
 
 export default (state = defaultState,action) => {
